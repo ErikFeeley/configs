@@ -6,5 +6,8 @@
     "zenMode.centerLayout": false,
     "zenMode.hideActivityBar": false,
     "zenMode.hideStatusBar": false,
-    "zenMode.hideTabs": false
+    "zenMode.hideTabs": false,
+    "editor.rulers": [
+        120
+    ]
 }
