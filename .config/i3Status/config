@@ -9,9 +9,14 @@
 general {
         colors = true
         interval = 5
-        color_good = "#2AA198"
-        color_bad = "#586E75"
-        color_degraded = "#DC322F"
+	# original manjaro colors
+        #color_good = "#2AA198"
+        #color_bad = "#586E75"
+        #color_degraded = "#DC322F"
+	# colors from base 16 tomorrow night
+	color_good = "#b5bd68"
+        color_bad = "#cc6666"
+        color_degraded = "#f0c674"
 }
 
 # order += "ipv6"
