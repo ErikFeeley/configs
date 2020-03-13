@@ -1,0 +1,51 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "go",
+        "cs",
+        "elm",
+        "haskell",
+        "fsharp",
+        "csharp",
+        "fs",
+        "Markdown",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "javascript",
+        "javascriptreact",
+        "rust"
+    ],
+    "eslint.filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "suggest.enablePreview": true,
+    "eslint.autoFix": true,
+    "html.filetypes": [
+        "html",
+        "handlebars",
+        "razor",
+        "cshtml"
+    ],
+    "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+      }
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+          "hoverKind":"FullDocumentation"
+      }
+    }
+  }
+}
