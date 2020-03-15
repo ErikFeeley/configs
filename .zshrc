@@ -58,3 +58,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # elm completions
 source ~/.zsh/elm-sh-completion/elm-completion.sh
+
+# ls with colors...
+alias ls='ls --color=auto'
