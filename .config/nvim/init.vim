@@ -317,7 +317,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " ONLY FOR OMNISHARP
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -329,12 +329,13 @@ call plug#end()
 
 " GET ALE JUST FOR OMNISHARP
 " Tell ALE to use OmniSharp for linting C# files, and no other linters.
-let g:ale_sign_column_always = 1
-let g:ale_linters_explicit = 1
-let g:ale_linters = { 'cs': ['OmniSharp'] }
-let g:ale_virtualtext_cursor = 1
-let g:ale_set_highlights = 1
-let g:ale_echo_cursor = 0
+"let g:ale_sign_column_always = 1
+"let g:ale_linters_explicit = 1
+"let g:ale_linters = { 'cs': ['OmniSharp'] }
+"let g:ale_virtualtext_cursor = 1
+"let g:ale_set_signs=1
+"let g:ale_set_highlights = 1
+"let g:ale_echo_cursor = 0
 " timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 5
 " Use the stdio version of OmniSharp-roslyn:
