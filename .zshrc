@@ -36,9 +36,25 @@ export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/efeeley/.dotnet/tools"
 alias dn=dotnet
 
+# zsh parameter completion for the dotnet CLI
+
+_dotnet_zsh_complete()
+{
+  local completions=("$(dotnet complete "$words")")
+
+  reply=( "${(ps:\n:)completions}" )
+}
+
+compctl -K _dotnet_zsh_complete dotnet
+
+# NODE BLEH
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
+# Still had to set gopath for the vim-go tools to work right
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 
+# elm completions
+source ~/.zsh/elm-sh-completion/elm-completion.sh
