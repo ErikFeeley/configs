@@ -1,5 +1,5 @@
 if exists('g:vscode')
-
+    set lazyredraw
 else
     set termguicolors
 
@@ -24,7 +24,7 @@ else
 
     set mouse=n
 
-    set cc=120
+    set cc=80
 
     " Tab settings
     set tabstop=4       " number of visual spaces per TAB
