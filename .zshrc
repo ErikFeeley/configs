@@ -14,6 +14,8 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/efeeley/.zshrc'
+# try case insensative completion
+zstyle ':completion:*'  matcher-list 'm:{a-z}={A-Z}'
 
 autoload -Uz compinit
 compinit
@@ -55,9 +57,13 @@ export npm_config_prefix=~/.node_modules
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# RUST
+export PATH=$PATH:$HOME/.cargo/bin
+
 
 # elm completions
 source ~/.zsh/elm-sh-completion/elm-completion.sh
 
 # ls with colors...
 alias ls='ls --color=auto'
+alias cp="cp -i" # confirm override
