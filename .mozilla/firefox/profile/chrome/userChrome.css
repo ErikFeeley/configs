@@ -2,7 +2,6 @@
 1. Navigate to `%APPDATA%\Mozilla\Firefox\Profiles ...` or locate the exact directory at `about:profiles`
 2. Create a folder named `chrome` then create a file named userChrome.css inside it and paste this code
 3. If userChrome.css doesn’t seem to work, open `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets=true`
-
 Other references:
 Firefox Support forum - Tabs below the URL bar: https://support.mozilla.org/en-US/kb/forum-response-tabs-below-url-bar
 Custom CSS tweaks for Firefox Quantum: https://github.com/Aris-t2/CustomCSSforFx
@@ -18,13 +17,8 @@ source: https://gist.github.com/Arty2/e6e61801531ec5ee1f9f
 /* bring the browser window to the top */
 #browser {
   -moz-box-ordinal-group: 0 !important;
-  padding-top: 0px;
+  padding-top: 1px;
 }
-
-/* alternative: move the toolbar to the bottom; */
-/*#appMenu-viewCache + box {
-	-moz-box-ordinal-group: 2 !important;
-}*/
 
 /* hide tab toolbar when fullscreen */
 #nav-bar[inFullscreen],
@@ -36,9 +30,15 @@ source: https://gist.github.com/Arty2/e6e61801531ec5ee1f9f
 #TabsToolbar > .titlebar-buttonbox-container {
   display: none !important;
 }
-/* open URL bar to top */
-/* get height of #navigator-toolbox booo cant do a fancy calc */
-#urlbar-container .urlbarView {
-  top: unset !important;
-  bottom: 80px !important;
+
+#urlbar.megabar[breakout][breakout-extend] {
+  display: flex !important;
+  flex-direction: column-reverse;
+  bottom: -2px !important; /* Change to 3-5 px if using compact_urlbar_megabar.css depending on toolbar density */
+  top: auto !important;
+}
+
+#urlbar.megabar[open] > .urlbarView {
+  margin-block: 0px calc(var(--urlbar-height) + 1px) !important;
+  box-shadow: none !important;
 }
