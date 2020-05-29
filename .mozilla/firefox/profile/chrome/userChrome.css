@@ -1,34 +1,40 @@
-/*
-1. Navigate to `%APPDATA%\Mozilla\Firefox\Profiles ...` or locate the exact directory at `about:profiles`
-2. Create a folder named `chrome` then create a file named userChrome.css inside it and paste this code
-3. If userChrome.css doesn’t seem to work, open `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets=true`
-Other references:
-Firefox Support forum - Tabs below the URL bar: https://support.mozilla.org/en-US/kb/forum-response-tabs-below-url-bar
-Custom CSS tweaks for Firefox Quantum: https://github.com/Aris-t2/CustomCSSforFx
-*/
+/* Moves tabs toolbar, bookmarks toolbar and main toolbar to the bottom of the window, and makes tabs be the bottom-most toolbar */
 
-@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Menubar will stay on top with two options to select it's behavior - see below */
 
-/*
-tabs to bottom
-source: https://gist.github.com/Arty2/e6e61801531ec5ee1f9f
-*/
+/* The pref browser.urlbar.update1 must be set to true to be able to show urlbar results popup */
 
-/* bring the browser window to the top */
-#browser {
-  -moz-box-ordinal-group: 0 !important;
-  padding-top: 1px;
+#titlebar {
+  -moz-appearance: none !important;
 }
 
-/* hide tab toolbar when fullscreen */
-#nav-bar[inFullscreen],
-#TabsToolbar[inFullscreen] {
-  display: none;
+@media (-moz-os-version: windows-win10) {
+  :root[sizemode="maximized"][tabsintitlebar]
+    :-moz-any(#browser, #customization-container, #toolbar-menubar) {
+    margin-top: 4px !important;
+  }
 }
 
-/* hide titlebar buttons */
-#TabsToolbar > .titlebar-buttonbox-container {
-  display: none !important;
+#mainPopupSet,
+#browser,
+#customization-container
+,#nav-bar, #PersonalToolbar/* Remove this row if you want tabs to be the top-most row */ {
+  -moz-box-ordinal-group: 0;
+}
+
+#toolbar-menubar {
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  top: 0px;
+}
+#toolbar-menubar:not([inactive]):hover {
+  height: calc(
+    var(--tab-min-height) - var(--tabs-navbar-shadow-size)
+  ) !important;
+}
+#toolbar-menubar > spacer {
+  flex-grow: 1;
 }
 
 #urlbar.megabar[breakout][breakout-extend] {
@@ -42,3 +48,24 @@ source: https://gist.github.com/Arty2/e6e61801531ec5ee1f9f
   margin-block: 0px calc(var(--urlbar-height) + 1px) !important;
   box-shadow: none !important;
 }
+
+/* Yeah, removes window controls. Likely not wanted on bottom row  */
+#TabsToolbar > .titlebar-buttonbox-container {
+  display: none;
+}
+
+/* Menubar options */
+/* 1. Overlay menubar on top of web-content (default) */
+/* This should be used if menubar is disabled and Alt-key is used to activate it temporarily */
+
+#toolbar-menubar {
+  z-index: 1;
+  background-color: var(--lwt-accent-color, black);
+}
+
+/* 2. Static menubar, uncomment to enable this option */
+/* Use when menubar is enabled to always show it */
+
+/*
+#browser,#customization-container{ padding-top: var(--tab-min-height) }
+*/

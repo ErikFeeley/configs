@@ -2,20 +2,6 @@
 # ~/.bashrc
 #
 
-# Customizations
-
-# completion stuff
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
-
-# dotnet stuff
-
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
-alias dn=dotnet
-
-# What came with i3 manjaro
-
 [[ $- != *i* ]] && return
 
 colors() {
@@ -151,3 +137,23 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+
+# Customizations
+
+# completion stuff
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+
+# dotnet stuff
+
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+export PATH="$PATH:/home/efeeley/.dotnet/tools"
+alias dn=dotnet
+
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
